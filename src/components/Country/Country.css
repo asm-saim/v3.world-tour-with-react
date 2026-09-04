@@ -10,3 +10,7 @@
   height: 150px;
   object-fit: cover;
 }
+
+.country-bg{
+    background-color: #0bceff34;
+}
