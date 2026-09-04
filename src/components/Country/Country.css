@@ -5,3 +5,8 @@
   border-radius: 5px;
 }
 
+.country img {
+  width: 280px;
+  height: 150px;
+  object-fit: cover;
+}
