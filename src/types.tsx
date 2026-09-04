@@ -12,4 +12,10 @@ export interface CountryType {
       alt: string;
     };
   };
+  capital: {
+    capital: string;
+  };
+  population: {
+    population: number;
+  };
 }
