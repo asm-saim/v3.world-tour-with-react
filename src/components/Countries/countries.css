@@ -1,5 +1,10 @@
-.countries{
-    display: grid;
-    grid-template-columns:repeat(4, 1fr);
-    gap: 10px;
+.countries {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
+
+.flag{
+  width: 70px;
+  height: 40px;
+  }

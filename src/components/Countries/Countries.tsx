@@ -19,19 +19,25 @@ export default function Countries({ countriesPromise }: CountriesProps) {
 
   // Function to handle marking a country as visited
   const handleVisited = (country: CountryType) => {
-    const visited = [...visitedCountries, country];
-    setVisitedCountries(visited);
+    const exists = visitedCountries.find((c) => c.ccn3.ccn3 === country.ccn3.ccn3);
+
+    if (exists) {
+      const remainingCountry = visitedCountries.filter((c) => c.ccn3.ccn3 !== country.ccn3.ccn3);
+      setVisitedCountries(remainingCountry);
+    } else {
+      const visited = [...visitedCountries, country];
+      setVisitedCountries(visited);
+    }
   };
 
   // Function to handle marking a flag as visited
   const handleFlags = (flags: string): void => {
     if (visitedFlags.includes(flags)) {
-      // return; // Flag already marked as visited, do nothing
-      const updatedVisitedFlags = visitedFlags.filter((flag) => flag !== flags);
-      setVisitedFlags(updatedVisitedFlags);
+      const remaining = visitedFlags.filter((f) => f !== flags);
+      setVisitedFlags(remaining);
     } else {
-      const markVisitedFlags = [...visitedFlags, flags];
-      setVisitedFlags(markVisitedFlags);
+      const flagsRemaining = [...visitedFlags, flags];
+      setVisitedFlags(flagsRemaining);
     }
   };
 
@@ -39,7 +45,17 @@ export default function Countries({ countriesPromise }: CountriesProps) {
     <>
       <h2>Countries: {countries.length}</h2>
       <h3>Visited Countries: {visitedCountries.length}</h3>
+      <div>
+        {visitedCountries.map((c) => (
+          <li>{c.name.common}</li>
+        ))}
+      </div>
       <h3>Visited Flags: {visitedFlags.length}</h3>
+      <div>
+        {visitedFlags.map((flag) => (
+          <img className="flag" src={flag} alt="visited flag"></img>
+        ))}
+      </div>
       <div className="countries">
         {countries.map((country) => (
           <Country
