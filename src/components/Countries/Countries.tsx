@@ -23,9 +23,14 @@ export default function Countries({ countriesPromise }: CountriesProps) {
     setVisitedCountries(visited);
   };
 
+  // Function to handle marking a flag as visited
   const handleFlags = (flags: string): void => {
-    const markVisitedFlags = [...visitedFlags, flags];
-    setVisitedFlags(markVisitedFlags);
+    if (visitedFlags.includes(flags)) {
+      return; // Flag already marked as visited, do nothing
+    } else {
+      const markVisitedFlags = [...visitedFlags, flags];
+      setVisitedFlags(markVisitedFlags);
+    }
   };
 
   return (
