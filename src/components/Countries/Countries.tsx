@@ -26,7 +26,9 @@ export default function Countries({ countriesPromise }: CountriesProps) {
   // Function to handle marking a flag as visited
   const handleFlags = (flags: string): void => {
     if (visitedFlags.includes(flags)) {
-      return; // Flag already marked as visited, do nothing
+      // return; // Flag already marked as visited, do nothing
+      const updatedVisitedFlags = visitedFlags.filter((flag) => flag !== flags);
+      setVisitedFlags(updatedVisitedFlags);
     } else {
       const markVisitedFlags = [...visitedFlags, flags];
       setVisitedFlags(markVisitedFlags);
